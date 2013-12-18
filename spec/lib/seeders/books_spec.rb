@@ -1,28 +1,25 @@
-module Seeders
-  module Books
-    class << self
-      def seed
+require 'spec_helper'
 
-        books.each do |title, attributes|
-          Book.find_or_create_by(title: title, author: attributes.first) do |book|
-            book.title = title
-            book.author = attributes.first
-            book.rating = attributes.last
-          end
-        end
-      end
-      def books
-        {
-            "Lord of the Flies" => [
-              "William Golding",
-              68
-          ],
-            "The Lord of the Rings Trilogy" => [
-              "J.R.R. Tolkien",
-              89
-          ]
-        }
-      end
-    end
+describe Seeders::Books do
+  let(:seeder) { Seeders::Books }
+
+  before(:each) do
+    seeder.seed
+  end
+
+  it 'seeds books' do
+    seeded_book = Seeders::Books.books.first[0]
+    expect(Book.where(title: seeded_book)).to be_present
+  end
+
+  it 'seeds book title' do
+    titles = Seeders::Books.books.keys
+    expect(Book.find_by(title: titles[0])).to be_present
+  end
+
+  it 'does not create duplicates' do
+    count_after_seed = Book.count
+    seeder.seed
+    expect(Book.count).to eql(count_after_seed)
   end
 end

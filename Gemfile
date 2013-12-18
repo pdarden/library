@@ -38,6 +38,8 @@ group :test, :development do
   gem 'shoulda-matchers'
 end
 
+gem 'pry'
+
 gem 'valid_attribute'
 
 # Use ActiveModel has_secure_password

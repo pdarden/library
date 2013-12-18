@@ -7,3 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Seeders::Books.seed
+Seeders::Categories.seed
