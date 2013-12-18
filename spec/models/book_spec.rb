@@ -9,4 +9,9 @@ describe Book do
   it { should have_valid(:author).when('Dr. Seuss') }
   it { should_not have_valid(:author).when(*blanks) }
 
+  it { should have_valid(:rating).when(49) }
+  it { should_not have_valid(:rating).when(101) }
+  it { should have_valid(:rating).when(0) }
+  it { should_not have_valid(:rating).when(-1) }
+
 end
