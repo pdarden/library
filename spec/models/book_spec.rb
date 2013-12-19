@@ -14,5 +14,6 @@ describe Book do
   it { should have_valid(:rating).when(0) }
   it { should_not have_valid(:rating).when(-1) }
   it { should have_valid(:rating).when(*blanks) }
+  it { should have_many(:categorizations) }
 
 end
