@@ -42,6 +42,8 @@ gem 'pry'
 
 gem 'valid_attribute'
 
+gem "rails-erd"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
